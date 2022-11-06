@@ -1,0 +1,60 @@
+package randomNumber;
+//import 문을 통해 Scanner의 경로명 java.util.Scanner 포함
+import java.util.Scanner; 
+//import 문을 통해 Random의 경로명 java.util.Random 포함
+import java.util.Random;
+
+//문제 조건에 맞는 클래스명 RandomBetween 생성
+public class RandomBetween {
+	
+	public static void main(String[] args) {
+		
+		//키 입력을 받을 수 있도록 하는 scanner를 사용한 생성문
+		Scanner s = new Scanner(System.in);
+		
+		//사용자로부터 임의의 정수 A와 Z를 입력받는다. 
+		System.out.print("입력 1 : ");
+		//다음 토큰(A)을 int 타입으로 리턴하는 s.nextInt(); 메소드
+		int A = s.nextInt();
+		System.out.print("입력 2 : ");
+		//다음 토큰(Z)을 int 타입으로 리턴하는 s.nextInt(); 메소드
+		int Z = s.nextInt();
+		
+		Random random =new Random();
+		
+		//Z가 A보다 클 경우
+		if(A<Z) {
+			//난수 10개를 생성하고 종료하는 반복문
+			for(int i=0;i<14;i++) { 
+				//0~Z사이의 난수를 생성하고 최솟값인 A를 더한다.
+				//결과적으로 범위 A~Z 사이의 난수 생성
+				int X = random.nextInt(Z)+A;
+				//'0~Z사이의 난수에 A를 더한 값'이 Z보다 클 경우 난수를 다시 생성한다.
+				if(X>Z) {
+					X=random.nextInt(Z)+A;
+					continue;
+				} 
+			//생성한 난수를 print한다.
+			System.out.println(X);
+			}
+		//A가 Z보다 클 경우
+		}else if(A>Z) {
+			//난수 10개를 생성하고 종료하는 반복문
+			for(int i=0;i<14;i++) {
+				//0~A사이의 난수를 생성하고 최솟값인 Z를 더한다.
+				//결과적으로 범위 Z~A 사이의 난수 생성
+				int X = random.nextInt(A)+Z;
+				//'0~A사이의 난수에 Z를 더한 값'이 A보다 클 경우 난수를 다시 생성한다.
+				if(X>A) {
+					X=random.nextInt(A)+Z;
+					continue;
+				}
+			//생성한 난수를 print한다.
+			System.out.println(X);
+			}
+		//**중요** A=Z일 경우, A와 Z를 같은 숫자로 입력하지 못하도록 한다.
+		}else{
+			System.out.println("첫번째수와 두번째수에 동일한수를 입력할수 없습니다.");
+		}
+	}
+}

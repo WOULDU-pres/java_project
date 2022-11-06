@@ -1,0 +1,52 @@
+package treeSet;
+
+
+public class Student implements Comparable<Student> { 
+	// treeSet 을 사용하기 위한  Comparable <Member>를 기반으로
+	
+	private int memberID;
+	private String memberName;
+	
+	public Student() {}
+	public Student(int memberID , String memberName) {
+		this.memberID = memberID;
+		this.memberName = memberName;	
+	}
+	public int getMemberID() {
+		return memberID;
+	}
+	public void setMemberID(int memberID) {
+		this.memberID = memberID;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public String toString() {
+		
+		return memberName + "회원님의 아이디는  " + memberID +" 입니다.";
+	}
+	
+	// Set 에서 중복을 방지하려면  MemberID 값이 같으면 true로 리턴 , hashCode도 정의해줘야한다.
+	@Override
+	public boolean equals(Object obj) {
+		Student student = (Student)obj; // 다운캐스팅
+		if(student.memberID == memberID) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	@Override
+	public int hashCode() {
+		return memberID;
+	}
+	
+	@Override
+	public int compareTo(Student student) { // this 나 하고 넘어온 매개변수랑 비교하면 된다.
+		return (this.memberID - memberID); // 아이디순 내께 더컸을때 양수를 반환하게 되면 오름차순으로 정렬된다.
+		
+	}
+}

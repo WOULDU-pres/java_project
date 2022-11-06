@@ -1,0 +1,39 @@
+package hashMap;
+//import 문을 통해 java.util 패키지의 모든 클래스 포함
+import java.util.*;
+
+public class MapExample {
+	public static void main(String[] args) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("blue", 96);
+		map.put("hong", 86);
+		map.put("white", 92);
+		String name = null;
+		int maxScore = 0;
+		int totalScore = 0;
+		// 모바일 프로그램 문제 3 코드 작성
+		
+		// map에 들어있는 모든 (key, value)쌍 리턴
+		// 모든 key를 가진 Set 컬렉션을 리턴
+		Set<String> keys = map.keySet();
+		// Set에 있는 모든 key를 순서대로 검색하는 Iterator을 리턴
+		Iterator<String> it = keys.iterator();
+		
+		//while문을 통해 모든 학생의 점수 비교한다.
+		while(it.hasNext()) {   
+			String key = it.next();                      // 다음 Key 학생 이름을 가져온다.
+			int value = map.get(key);                    // 가져온 학생의 이름으로 HashMap 검색을 통해 점수를 알아낸다.
+			totalScore = totalScore + value;             // 평균점수 생성을 위해 모든 학생의 점수를 합한다.
+			maxScore = (maxScore<value)? value:maxScore; // 새로 입력받은 값이 이전 최고점수보다 높다면 최고점수 갱신
+			name = (maxScore <= map.get(key))? key:name; // 최고점수의 학생의 이름을 HashMap 검색을 통해 가져온다.
+		}
+		
+		// 모바일 프로그램 문제 3 코드 작성
+		
+		int avgScore = totalScore / map.size();
+		System.out.println("평균 점수 : " + avgScore);
+		System.out.println("최고 점수 : " + maxScore);
+		System.out.println("최고 점수를 받은 아이디 : " + name);
+		System.out.println();
+	}
+}

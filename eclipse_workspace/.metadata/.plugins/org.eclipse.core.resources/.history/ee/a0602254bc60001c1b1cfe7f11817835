@@ -1,0 +1,30 @@
+package chatServer;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+
+public class Server {
+    public static ArrayList<PrintWriter> m_OutputList;
+
+    public static void main(String[] args){
+        m_OutputList = new ArrayList<PrintWriter>();
+
+        try{
+            ServerSocket s = new ServerSocket(8888);
+            while(true){
+                Socket c = s.accept();
+                Client c = new Client();
+                c.setSocket(c);
+
+                m_OutputList.add(new PrintWriter(c.getOutputStream()));
+                System.out.println(m_OutputList.size());
+                c.start();
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+}

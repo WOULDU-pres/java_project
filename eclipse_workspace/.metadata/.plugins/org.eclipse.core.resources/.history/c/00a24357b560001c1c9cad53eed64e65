@@ -1,0 +1,26 @@
+package printNameAge;
+
+//Person 클래스 생성
+class Person implements Comparable<Object> {
+	//이름과 나이를 private 형태로 변수 선언
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }    
+
+    //compareTo를 오버라이드
+    @Override
+    public int compareTo(Object object) {
+       Person p = (Person)object;
+       return p.age - this.age;
+    }
+    
+    //toString을 오버라이드
+    @Override
+    public String toString() {
+        return name + " : " + age;
+    }
+}

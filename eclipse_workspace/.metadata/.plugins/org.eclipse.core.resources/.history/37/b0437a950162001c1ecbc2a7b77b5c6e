@@ -1,0 +1,35 @@
+package treeSet;
+
+public class Student implements Comparable<Student>{
+	public String id;
+	public int score;
+	
+	public Student(String id, int score) {
+		this.id = id;
+		this.score = score;
+	}
+	
+	public boolean equals(Student object) {
+		Student student = (Student)object; // 다운캐스팅
+		if(student.score == score) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@Override
+	public int hashCode() {
+		return score;
+	}
+	
+	@Override
+	public int compareTo(Student student) { // this 나 하고 넘어온 매개변수랑 비교하면 된다.
+		return (this.score - score); // 아이디순 내께 더컸을때 양수를 반환하게 되면 오름차순으로 정렬된다.
+	}
+    
+    @Override
+    public String toString() {
+        return id + " : " + score;
+    }
+}

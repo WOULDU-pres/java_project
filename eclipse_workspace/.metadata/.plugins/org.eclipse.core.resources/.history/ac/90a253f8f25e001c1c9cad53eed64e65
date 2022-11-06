@@ -1,0 +1,54 @@
+package randomNumber;
+//import 문을 통해 Scanner의 경로명이 java.util.Scanner 임을 명시
+import java.util.Scanner; 
+//import 문을 통해 Random의 경로명이 java.util.Random 임을 명시
+import java.util.Random;
+
+//문제 조건에 맞는 클래스명 RandomBetween 생성
+public class RandomBetween {
+
+	static Random random;
+	
+	public static void main(String[] args) {
+		
+		//키 입력을 받을 수 있도록 하는 scanner를 사용한 생성문
+		Scanner s = new Scanner(System.in);
+		
+		//사용자로부터 임의의 정수 A와 Z를 입력받는다. 
+		System.out.print("입력 1 : ");
+		//다음 토큰(a)을 int 타입으로 리턴하는 s.nextInt(); 메소드
+		int a = s.nextInt();
+		System.out.print("입력 2 : ");
+		//다음 토큰(z)을 int 타입으로 리턴하는 s.nextInt(); 메소드
+		int z = s.nextInt();
+		
+		random =new Random(z);
+		
+		if(a<z) {
+		  for(int i=0;i<10;i++) {
+			  
+			  int x = random.nextInt(z)+a;
+			if(x>z) {
+				x=random.nextInt(z)+a;
+				continue;
+			} 
+
+			  System.out.println(x);
+		  }
+		  }else if(a==z) {
+			  System.out.println("첫번째수와 두번째수에 동일한수를 입력할수 없습니다.");
+		  }
+		else{
+			  for(int i=0;i<10;i++) {
+				  
+				  int x = random.nextInt(a)+z;
+				  if(x>a) {
+						x=random.nextInt(a)+z;
+						continue;
+					} 
+					 
+			  System.out.println(x);
+			  }
+	}
+	}
+}
